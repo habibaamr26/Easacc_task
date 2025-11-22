@@ -7,6 +7,7 @@ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:wifi_iot/wifi_iot.dart';
 
 class WebViewRemoteDataSource {
+  
   Future<WebViewUrlModel> fetchWebViewUrl(String url) async {
     return WebViewUrlModel(url: url);
   }

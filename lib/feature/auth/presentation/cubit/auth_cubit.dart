@@ -16,7 +16,6 @@ class GoogleAuthCubit extends Cubit<GoogleAuthState> {
     : _auth = auth ?? FirebaseAuth.instance,
       super(GoogleAuthInitial());
 
-
   Future<void> signInWithGoogle() async {
     emit(GoogleAuthLoading());
 
@@ -32,14 +31,11 @@ class GoogleAuthCubit extends Cubit<GoogleAuthState> {
 
   Future<void> signInWithFacebook() async {
     emit(GoogleAuthLoading());
-    log("بدء تسجيل الدخول عبر فيسبوك");
 
     try {
       final LoginResult result = await FacebookAuth.instance.login(
         permissions: ['email', 'public_profile'],
       );
-
-      log("نتيجة تسجيل الدخول: ${result.status}");
 
       if (result.status == LoginStatus.success) {
         final AccessToken? accessToken = result.accessToken;
@@ -57,26 +53,20 @@ class GoogleAuthCubit extends Cubit<GoogleAuthState> {
           credential,
         );
 
-        log("تم تسجيل الدخول باسم: ${userCredential.user?.displayName}");
         emit(GoogleAuthSuccess());
       } else if (result.status == LoginStatus.cancelled) {
-        log("تم إلغاء تسجيل الدخول");
-        emit(GoogleAuthFailure("تم إلغاء تسجيل الدخول"));
+        emit(GoogleAuthFailure("User cancelled the login process."));
       } else {
-        log("فشل تسجيل الدخول: ${result.status} - ${result.message}");
         emit(
           GoogleAuthFailure(
-            "فشل تسجيل الدخول: ${result.message ?? 'خطأ غير معروف'}",
+            "Login failed: ${result.message ?? 'Unknown error'}",
           ),
         );
       }
     } on FirebaseAuthException catch (e) {
-      log("Firebase Auth Error: ${e.code} - ${e.message}");
-      emit(GoogleAuthFailure("خطأ في Firebase: ${e.message}"));
+      emit(GoogleAuthFailure("Firebase error: ${e.message}"));
     } catch (e) {
-      log("Facebook Sign In Error: $e");
-      emit(GoogleAuthFailure("حصل خطأ غير متوقع: $e"));
+      emit(GoogleAuthFailure("Error: $e"));
     }
   }
 }
-

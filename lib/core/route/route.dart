@@ -1,12 +1,15 @@
+import 'package:easacc_task/core/di/dependancy_injection.dart';
 import 'package:easacc_task/feature/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:easacc_task/feature/auth/presentation/cubit/auth_cubit.dart';
 import 'package:easacc_task/feature/settings/data/data_source/remote_data_cource.dart';
 import 'package:easacc_task/feature/settings/data/repository/setting_repo.dart';
 import 'package:easacc_task/feature/settings/presentation/cubit/setting_cubit.dart';
 import 'package:easacc_task/feature/settings/presentation/views/setting_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:easacc_task/feature/auth/presentation/views/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AppRoute {
   Route generateRoute(RouteSettings settings) {
@@ -15,7 +18,7 @@ class AppRoute {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (BuildContext context) =>
-                GoogleAuthCubit(GoogleSignInService()),
+                GoogleAuthCubit(GoogleSignInService(googleSignIn: getIt(), auth: getIt())),
             child: const LoginScreen(),
           ),
         );
@@ -23,9 +26,7 @@ class AppRoute {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (BuildContext context) => SettingCubit(
-              repository: SettingRepository(
-                remoteDataSource: WebViewRemoteDataSource(),
-              ),
+              repository: getIt<SettingRepository>(),
             ),
             child: SettingsPage(),
           ),

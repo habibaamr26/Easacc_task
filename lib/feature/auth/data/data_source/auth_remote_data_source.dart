@@ -5,18 +5,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignInService {
-  static final FirebaseAuth _auth = FirebaseAuth.instance;
-  static final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+   final FirebaseAuth auth ;
+   final GoogleSignIn googleSignIn ;
   static bool isInitialize = false;
 
-  static List<String> scopes = <String>[
+GoogleSignInService({required this.googleSignIn, required this.auth});
+   List<String> scopes = <String>[
     'email',
     'https://www.googleapis.com/auth/contacts.readonly',
   ];
-  static Future<void> initSignIn() async {
+   Future<void> initSignIn() async {
     try {
       if (!isInitialize) {
-        await _googleSignIn.initialize();
+        await googleSignIn.initialize();
         isInitialize = true;
       }
     } catch (e) {
@@ -29,7 +30,7 @@ class GoogleSignInService {
     try {
       await initSignIn();
 
-      final GoogleSignInAccount? googleUser = await _googleSignIn
+      final GoogleSignInAccount? googleUser = await googleSignIn
           .authenticate();
       if (googleUser == null) {
         throw FirebaseCustomException("Sign-in was cancelled by the user.");
@@ -41,7 +42,7 @@ class GoogleSignInService {
         accessToken: googleAuth.idToken,
         idToken: googleAuth.idToken,
       );
-      final UserCredential userCredential = await _auth.signInWithCredential(
+      final UserCredential userCredential = await auth.signInWithCredential(
         credential,
       );
 
@@ -61,4 +62,7 @@ class GoogleSignInService {
       throw FirebaseCustomException(readableMessage);
     }
   }
+
+
+
 }
