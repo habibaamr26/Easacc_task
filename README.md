@@ -2,18 +2,6 @@
 
 A comprehensive Flutter application demonstrating social authentication (Google & Facebook), WebView management, and real-time WiFi/Bluetooth device scanning with auto-refresh capabilities.
 
-## 📋 Table of Contents
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Architecture](#architecture)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Features Deep Dive](#features-deep-dive)
-- [Error Handling](#error-handling)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## ✨ Features
 
 ### 🔐 Authentication
