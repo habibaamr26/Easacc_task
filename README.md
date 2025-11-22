@@ -40,15 +40,22 @@ A comprehensive Flutter application demonstrating social authentication (Google 
 
 ## 📸 Screenshots
 
-[Login Screen:by choices Google و Facebook](https://github.com/habibaamr26/Easacc_task/blob/main/1.jpg)
-[Login Screen:Google Sign-In: choose Google account](https://github.com/habibaamr26/Easacc_task/blob/main/2.jpg)
-[Settings Screen:search for devices](https://github.com/habibaamr26/Easacc_task/blob/main/3.jpg)
-[Settings Screen:Device Scanner](https://github.com/habibaamr26/Easacc_task/blob/main/4.jpg)
-[Settings Screen:URL Input for youtube](https://github.com/habibaamr26/Easacc_task/blob/main/5.jpg)
-[WebView in Action :YouTube WebView](https://github.com/habibaamr26/Easacc_task/blob/main/6.jpg)
-[WebView in Action :Search Functionality in youtube](https://github.com/habibaamr26/Easacc_task/blob/main/7.jpg)
-[WebView in Action:Search Results youtube](https://github.com/habibaamr26/Easacc_task/blob/main/8.jpg)
-[Device Discovery:Bluetooth Device Found: جهاز Bluetooth تم اكتشافه مع Auto-refresh](https://github.com/habibaamr26/Easacc_task/blob/main/9.jpg)
+| Login Screen | Google Sign-In | Settings Screen |
+|:---:|:---:|:---:|
+| ![Login Screen](https://github.com/habibaamr26/Easacc_task/blob/main/1.jpg) | ![Google Sign-In](https://github.com/habibaamr26/Easacc_task/blob/main/2.jpg) | ![Settings](https://github.com/habibaamr26/Easacc_task/blob/main/3.jpg) |
+| Welcome screen with Google & Facebook login options | Native Google account selection dialog | Main settings with device scanner |
+
+| Device Scanner | URL Input | YouTube WebView |
+|:---:|:---:|:---:|
+| ![Device Scanner](https://github.com/habibaamr26/Easacc_task/blob/main/4.jpg) | ![URL Input](https://github.com/habibaamr26/Easacc_task/blob/main/5.jpg) | ![YouTube](https://github.com/habibaamr26/Easacc_task/blob/main/6.jpg) |
+| Bluetooth/WiFi devices with auto-refresh | Enter website URL with validation | Full-featured WebView with YouTube |
+
+| Search in WebView | Search Results | Bluetooth Device |
+|:---:|:---:|:---:|
+| ![Search](https://github.com/habibaamr26/Easacc_task/blob/main/7.jpg) | ![Results](https://github.com/habibaamr26/Easacc_task/blob/main/8.jpg) | ![Bluetooth](https://github.com/habibaamr26/Easacc_task/blob/main/9.jpg) |
+| Arabic keyboard support in WebView | Live search results displayed | Discovered Bluetooth device |
+
+
 
 
 ## 🏗️ Architecture
