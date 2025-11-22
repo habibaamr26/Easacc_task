@@ -17,7 +17,14 @@ class DropDownWidget extends StatefulWidget {
 
 class _DropDownWidgetState extends State<DropDownWidget> {
  Device? selectedDevice;
-
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (widget.devices.isNotEmpty) {
+    selectedDevice = widget.devices.first; 
+  }
+  }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -39,7 +46,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField<Device>(
-                  value: selectedDevice,
+                  initialValue: widget.devices.contains(selectedDevice) ? selectedDevice : null,
                   isExpanded: true,
                   items: widget.devices
                       .map(

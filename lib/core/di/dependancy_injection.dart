@@ -10,19 +10,15 @@ import 'package:google_sign_in/google_sign_in.dart';
 final getIt = GetIt.instance;
 
 void setupDependencyInjection() {
-  // تسجيل جميع الـ dependencies قبل أي استخدام
   authDependencyInjectionInit();
   settingDependencyInjectionInit();
 }
 
 void authDependencyInjectionInit() {
-  // تسجيل FirebaseAuth
   getIt.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
 
-  // تسجيل GoogleSignIn
   getIt.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn.instance);
 
-  // تسجيل GoogleSignInService
   getIt.registerLazySingleton<GoogleSignInService>(
     () => GoogleSignInService(
       auth: getIt<FirebaseAuth>(),
@@ -30,24 +26,20 @@ void authDependencyInjectionInit() {
     ),
   );
 
-  // تسجيل GoogleAuthCubit
   getIt.registerFactory<GoogleAuthCubit>(
     () => GoogleAuthCubit(getIt<GoogleSignInService>()),
   );
 }
 
 void settingDependencyInjectionInit() {
-  // تسجيل Data Source
   getIt.registerLazySingleton<WebViewRemoteDataSource>(
     () => WebViewRemoteDataSource(),
   );
 
-  // تسجيل Repository
   getIt.registerLazySingleton<SettingRepository>(
     () => SettingRepository(remoteDataSource: getIt<WebViewRemoteDataSource>()),
   );
 
-  // تسجيل Cubit
   getIt.registerFactory<SettingCubit>(
     () => SettingCubit(repository: getIt<SettingRepository>()),
   );
